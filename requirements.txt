@@ -9,8 +9,6 @@ click==8.1.7
 cloudpickle==3.0.0
 contourpy==1.2.1
 cupy-cuda11x==13.3.0
-cudatoolkit==11.2
-cudnn==8.1.0
 customtkinter==5.2.2
 cycler==0.12.1
 darkdetect==0.8.0
