@@ -265,7 +265,7 @@ def run_accn(file_path, model_folder):
 
 def reconstruct_final_heatmaps(file_path):
     res = "20x"
-    wsi = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+    wsi = tiff.imread(file_path)[:, :, 0]
     h, w = wsi.shape[0], wsi.shape[1]
     del wsi
     wsi_name = os.path.splitext(os.path.basename(file_path))[0]
