@@ -58,18 +58,22 @@ The system uses avalible GPU for the semantic segmentation and CPU to compute th
    cd e2emli
    ```
 
-2. Set up the [Python 3.9](https://www.python.org/) enviromnet:
+2. Download the pre-trained models from:
+   - [Link 1](https://www.sce.carleton.ca/faculty/chan/download/MLImodel.zip)
+   - [Link 2](https://www.dropbox.com/scl/fi/2jern356ii7lfvjkn6bwx/MLImodel.zip?rlkey=xo1hu09uw2j7i0qf4xltjdlos&st=nlclzqcl&dl=0)
+
+3. Set up the Python 3.9 environment:
    ```bash
    conda create --name MLI Python==3.9
    conda activate MLI
    ```
 
-3. Install required dependencies:
+4. Install required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Launch the GUI:
+5. Launch the GUI:
    ```bash
    python app.py
    ```
