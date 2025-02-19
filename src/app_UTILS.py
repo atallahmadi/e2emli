@@ -288,3 +288,4 @@ def clean_temp(file_path):
     if os.path.exists(temp) and os.path.isdir(temp):
         shutil.rmtree(temp)
     print("Semantic Segmentation masks are created")
+

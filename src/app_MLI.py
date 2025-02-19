@@ -4,6 +4,8 @@ import tqdm
 import numpy as np
 import pandas as pd
 import tifffile as tiff
+
+from PIL import Image
 from skimage import io, morphology
 
 
@@ -28,7 +30,8 @@ def dir_score(wsi_masks_folder_path, wsi_path, fov_x, fov_y, overlap_x, overlap_
     wsi_parent_path = os.path.dirname(wsi_path)
 
     # load the respective WSI masks
-    BG_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[0]), 0)
+    # BG_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[0]), 0)
+    BG_BW_WSI = np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[0])))
 
     # Ensure the user input values are not invalid
     if fov_x > BG_BW_WSI.shape[0]:
@@ -44,16 +47,16 @@ def dir_score(wsi_masks_folder_path, wsi_path, fov_x, fov_y, overlap_x, overlap_
         raise ValueError('Error: save_fov must be either 0 (do not save FOVs) or 1 (save FOVs).')
 
     print("Starting MLI Calculation using Direct Method")
-    BR_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[1]), 0)
-    BV_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[2]), 0)
-    AVLW_BW_WSI=cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[3]), 0)
+    BR_BW_WSI = np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[1])))
+    BV_BW_WSI = np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[2])))
+    AVLW_BW_WSI=np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[3])))
 
     mli_folder = os.path.join(wsi_parent_path, f"{wsi_name}_MLI")        
     os.makedirs(mli_folder, exist_ok=True)
 
     if save_fov == 1:
         # load original WSI and split into rgb channels
-        ORIGINAL_WSI = io.imread(wsi_path)
+        ORIGINAL_WSI = tiff.imread(wsi_path)
         ORIGINAL_WSI = ORIGINAL_WSI[:, :, :3]  # remove Alpha channel
         # split into RGB color channels
         r_ORIGINAL_WSI, g_ORIGINAL_WSI, b_ORIGINAL_WSI = cv2.split(ORIGINAL_WSI)
@@ -580,9 +583,8 @@ def indir_score(wsi_masks_folder_path, wsi_path, fov_x, fov_y, overlap_x, overla
     wsi_name, wsi_format = os.path.splitext(os.path.basename(wsi_path))
     wsi_parent_path = os.path.dirname(wsi_path)
 
-
     # load the respective WSI masks
-    BG_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[0]), 0)
+    BG_BW_WSI = np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[0])))
 
     # Ensure the user input values are not invalid
     if fov_x > BG_BW_WSI.shape[0]:
@@ -597,9 +599,9 @@ def indir_score(wsi_masks_folder_path, wsi_path, fov_x, fov_y, overlap_x, overla
     if save_fov < 0 or save_fov > 1:
         raise ValueError('Error: save_fov must be either 0 (do not save FOVs) or 1 (save FOVs).')
 
-    BR_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[1]), 0)
-    BV_BW_WSI = cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[2]), 0)
-    AVLW_BW_WSI=cv2.imread(os.path.join(wsi_masks_folder_path, wsi_mask_list[3]), 0)
+    BR_BW_WSI = np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[1])))
+    BV_BW_WSI = np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[2])))
+    AVLW_BW_WSI=np.array(Image.open(os.path.join(wsi_masks_folder_path, wsi_mask_list[3])))
 
     print("Starting MLI Calculation using Indirect Method")
     mli_folder = os.path.join(wsi_parent_path, f"{wsi_name}_MLI")        
@@ -607,7 +609,7 @@ def indir_score(wsi_masks_folder_path, wsi_path, fov_x, fov_y, overlap_x, overla
 
     if save_fov == 1:
         # load original WSI and split into rgb channels
-        ORIGINAL_WSI = io.imread(wsi_path)
+        ORIGINAL_WSI = tiff.imread(wsi_path)
         ORIGINAL_WSI = ORIGINAL_WSI[:, :, :3]  # remove Alpha channel
         # split into RGB color channels
         r_ORIGINAL_WSI, g_ORIGINAL_WSI, b_ORIGINAL_WSI = cv2.split(ORIGINAL_WSI)
