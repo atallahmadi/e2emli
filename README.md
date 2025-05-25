@@ -1,9 +1,7 @@
-
 # End-To-End Automated Mean Linear Intercept Measurement System
 
 [![Python 3.9](https://img.shields.io/badge/Python-3.9-blue)](https://www.python.org/downloads/release/python-390/)
 [![TensorFlow](https://img.shields.io/badge/Framework-TensorFlow-orange)](https://www.tensorflow.org/) 
-
 
 This repository hosts the implementation and resources for the automated Mean Linear Intercept (MLI) measurement system. The system is designed to calculate the MLI from histopathological images of lung tissue using a deep learning-based approach for semantic segmentation.
 
@@ -83,6 +81,7 @@ The system uses avalible GPU for the semantic segmentation and CPU to compute th
 ## Citation
 
 > A. Madi and A. . Chan, “End-To-End Automated Mean Linear Intercept Measurement System”, CMBES Proc., vol. 47, no. 1, May 2025.
+
 
 ## Acknowledgements
 
