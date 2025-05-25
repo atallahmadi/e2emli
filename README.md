@@ -2,14 +2,10 @@
 # End-To-End Automated Mean Linear Intercept Measurement System
 
 [![Python 3.9](https://img.shields.io/badge/Python-3.9-blue)](https://www.python.org/downloads/release/python-390/)
-[![Anaconda](https://img.shields.io/badge/Environment-Anaconda-green)](https://www.anaconda.com/) 
 [![TensorFlow](https://img.shields.io/badge/Framework-TensorFlow-orange)](https://www.tensorflow.org/) 
-[![NumPy](https://img.shields.io/badge/Library-NumPy-blue)](https://numpy.org/) 
-[![Pandas](https://img.shields.io/badge/Library-Pandas-purple)](https://pandas.pydata.org/) 
 
-This repository hosts the implementation and resources for the automated Mean Linear Intercept (MLI) measurement system. The related paper has been submitted to the 47th Canadian Medical and Biological Engineering Society (CMBEC47) Conference and is currently under review.
 
-The system is designed to calculate the MLI from histopathological images of lung tissue using a deep learning-based approach for semantic segmentation.
+This repository hosts the implementation and resources for the automated Mean Linear Intercept (MLI) measurement system. The system is designed to calculate the MLI from histopathological images of lung tissue using a deep learning-based approach for semantic segmentation.
 
 
 ## Features
@@ -68,12 +64,17 @@ The system uses avalible GPU for the semantic segmentation and CPU to compute th
    conda activate MLI
    ```
 
-4. Install required dependencies:
+4. Install CUDA Toolkit and cuDNN:
+   ```bash
+   conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+   ```
+
+5. Install required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-5. Launch the GUI:
+6. Launch the GUI:
    ```bash
    python app.py
    ```
@@ -81,9 +82,7 @@ The system uses avalible GPU for the semantic segmentation and CPU to compute th
 
 ## Citation
 
-If you use this system, please cite the following paper:
-> Atallah Madi, Adrian D.C. Chan. "End-To-End Automated Mean Linear Intercept Measurement System." *47th Canadian Medical and Biological Engineering Society Conference*. 2025.
-
+> A. Madi and A. . Chan, “End-To-End Automated Mean Linear Intercept Measurement System”, CMBES Proc., vol. 47, no. 1, May 2025.
 
 ## Acknowledgements
 

@@ -10,7 +10,9 @@ from app_MLI import dir_score, indir_score
 from app_UTILS import extract_tiles, run_eccn, reconstruct_heatmaps, extract_hm_tiles, run_accn, reconstruct_final_heatmaps, clean_temp
 
 MASKS = {"BG.tif", "BR.tif", "BV.tif", "AVLW.tif"}
-class PrintLogger(object):
+
+
+class PrintLogger:
     def __init__(self, textbox):
         self.textbox = textbox
         self.ansi_escape = re.compile(r'(?:\x1B[@-_]|[\x08\x0A\x0D])[\x30-\x7E]*')
@@ -34,8 +36,8 @@ class PrintLogger(object):
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Air Space Size Assessment v1.00")
-        self.root.geometry("700x600")
+        self.root.title("Air Space Size Assessment")
+        self.root.geometry("700x650")
         self.root.resizable(False, False)
 
         self.root.grid_rowconfigure(0, weight=1)
@@ -234,11 +236,8 @@ class App:
         x.grid_rowconfigure(0, weight=1)
         x.grid_columnconfigure(0, weight=1)
 
-        self.OUTPUT = tk.Text(x, height=5, state='disabled',  font=("Courier", 10))
+        self.OUTPUT = tk.Text(x, height=3, state='disabled', wrap='word', font=("Courier", 9))
         self.OUTPUT.grid(row=0, column=0, columnspan=2, padx=0, pady=0, sticky="we")
-        scrollbar = tk.Scrollbar(x, orient="vertical", command=self.OUTPUT.yview)
-        scrollbar.grid(row=0, column=2, sticky="ns")
-        self.OUTPUT.configure(yscrollcommand=scrollbar.set)
 
     ################# VALIDATE FUNCTIONS #################
 
