@@ -81,8 +81,7 @@ The system uses avalible GPU for the semantic segmentation and CPU to compute th
 ## Citation
 
 A. Madi and A. . Chan, “End-To-End Automated Mean Linear Intercept Measurement System”, CMBES Proc., vol. 47, no. 1, May 2025.
-
-[Article](https://proceedings.cmbes.ca/index.php/proceedings/article/view/1221)
+- [Article](https://proceedings.cmbes.ca/index.php/proceedings/article/view/1221)
 
 
 ## Acknowledgements
